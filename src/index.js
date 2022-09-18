@@ -3,7 +3,7 @@ const bodyParser = require("body-parser")
 const mongoose = require("mongoose");
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT
 
 app.use(bodyParser.json())
 app.use(express.static('public'))
@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({
     extended:true
 }))
 
-mongoose.connect('mongodb://localhost:27017/mydb',{
+mongoose.connect('process.env.MONGODB_URL',{
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
